@@ -16,6 +16,6 @@ public class VideoCosConsumer {
 
     @KafkaListener(topics = {"test"})
     public void consumerMessage(ConsumerRecord<?, ?> record){
-        logger.info("on message:{}{}", record.value());
+        logger.info("on message:{}", record.value());
     }
 }
