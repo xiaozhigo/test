@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @date 2018-11-26 16:10
  */
 @Component
-public class KafkaProducer {
+public class KafkaProducer implements CommandLineRunner{
     private Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     private KafkaTemplate kafkaTemplate;
@@ -19,5 +20,17 @@ public class KafkaProducer {
     public void send(String message){
        logger.info("message:",message);
        kafkaTemplate.send("test",message);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        for (int i = 0;i < 3;i++){
+            send("呼呼");
+            try{
+                Thread.sleep(1000);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
     }
 }
