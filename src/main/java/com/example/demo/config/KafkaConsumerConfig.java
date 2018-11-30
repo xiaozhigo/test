@@ -22,7 +22,7 @@ import java.util.Map;
 @Configuration
 @EnableKafka
 public class KafkaConsumerConfig {
-    @Value("${kafka.consumer.servers}")
+    @Value("${spring.kafka.bootstrap-servers}")
     private String servers;
     @Value("${kafka.consumer.enable.auto.commit}")
     private String enableAutoCommit;

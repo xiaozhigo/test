@@ -18,7 +18,7 @@ public class SpringTaskDemo {
     private static final Logger log = LoggerFactory.getLogger(SpringTaskDemo.class);
 
     @Async
-    @Scheduled(cron = "0/1 * * * * *")
+    @Scheduled(cron = "0/* 59 * * * *")
     public void scheduled1() throws InterruptedException {
          Thread.sleep(3000);
          log.info("scheduled1 每1秒执行一次：{}"+ LocalDateTime.now());

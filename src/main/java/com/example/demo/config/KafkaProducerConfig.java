@@ -21,7 +21,7 @@ import java.util.Map;
 @Configuration
 @EnableKafka
 public class KafkaProducerConfig {
-    @Value("${kafka.producer.servers}")
+    @Value("${spring.kafka.bootstrap-servers}")
     private String servers;
     @Value("${kafka.producer.retries}")
     private String retries;
