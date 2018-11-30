@@ -79,4 +79,9 @@ public class HelloWorldController {
     public String update(@Validated(value = {Groups.Default.class,Groups.Update.class}) Book book) {
         return "update";
     }
+
+    @RequestMapping("/queryItem")
+    public Map<String,Object> queryItem(){
+        return helloService.queryItem();
+    }
 }

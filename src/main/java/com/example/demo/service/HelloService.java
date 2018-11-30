@@ -49,4 +49,11 @@ public class HelloService {
            PageInfo<Map<String, Object>> pageInfo = new PageInfo<>(list);
            return pageInfo;
     }
+
+    public Map<String,Object> queryItem() {
+        Map<String, Object> map = new HashMap<>();
+        List<Map<String,Object>> list = testMapper.queryItem();
+        map.put("resultDesc:",list);
+        return map;
+    }
 }

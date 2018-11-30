@@ -17,4 +17,5 @@ public interface TestMapper {
     Integer updateById(Map<String,Object> map);
     List<Map<String,Object>> selectById(String id);
     List<Map<String,Object>> queryUserByIds(String[] idArray);
+    List<Map<String,Object>> queryItem();
 }

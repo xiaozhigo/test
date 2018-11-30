@@ -47,4 +47,8 @@
         #{id}
         </foreach>
     </select>
+
+    <select id="queryItem" resultType="map">
+        select * from tb_item
+    </select>
 </mapper>
