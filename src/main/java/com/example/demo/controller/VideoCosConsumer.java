@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class VideoCosConsumer {
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @KafkaListener(topics = {"test"})
+    @KafkaListener(topics = {"test1"})
     public void consumerMessage(ConsumerRecord<?, ?> record){
         logger.info("on message:{}", record.value());
     }

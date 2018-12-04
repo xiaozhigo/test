@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author wulei
@@ -26,23 +28,25 @@ public class KafkaProducer{
     private KafkaTemplate kafkaTemplate;
 
     @RequestMapping("/send")
-    public Map<String,Object> send(String message){
+    public Map<String, Object> send(String message){
         Map<String, Object> map = new HashMap<>();
         logger.info("message:",message);
-        ListenableFuture test = kafkaTemplate.send("test", message);
-        test.addCallback(new SuccessCallback() {
+        ListenableFuture test = kafkaTemplate.send("test1",message);
+        SuccessCallback success = new SuccessCallback() {
             @Override
             public void onSuccess(Object o) {
                 System.out.println(o + "成功了");
-                map.put("resultDesc:",o+"成功了");
+                map.put("resultDesc","成功了");
             }
-        }, new FailureCallback() {
+        };
+        FailureCallback fail = new FailureCallback() {
             @Override
             public void onFailure(Throwable throwable) {
-                System.out.println("失败原因:"+throwable);
-                map.put("resultDesc:","失败原因:"+throwable);
+                System.out.println("失败原因:" + throwable);
+                map.put("resultDesc","失败原因:" + throwable);
             }
-        });
+        };
+        test.addCallback(success,fail);
         return map;
     }
 

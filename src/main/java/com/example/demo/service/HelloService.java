@@ -53,7 +53,11 @@ public class HelloService {
     public Map<String,Object> queryItem() {
         Map<String, Object> map = new HashMap<>();
         List<Map<String,Object>> list = testMapper.queryItem();
-        map.put("resultDesc:",list);
+        map.put("resultDesc",list);
         return map;
+    }
+
+    public void insertItem(Map<String, Object> hashMap) {
+           testMapper.insertItem(hashMap);
     }
 }

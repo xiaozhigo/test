@@ -1,4 +1,4 @@
-package com.example.demo.timer;
+/*package com.example.demo.timer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
-/**
+*//**
  * @author wulei
  * @date 2018-11-22 15:59
- */
+ *//*
 @Component
 public class SpringTaskDemo {
 
@@ -35,4 +35,4 @@ public class SpringTaskDemo {
         Thread.sleep(5000);
         log.info("scheduled3 上次执行完毕后隔3秒继续执行：{}",LocalDateTime.now());
     }
-}
+}*/
