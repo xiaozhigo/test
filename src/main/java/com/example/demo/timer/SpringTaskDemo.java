@@ -18,21 +18,23 @@ public class SpringTaskDemo {
     private static final Logger log = LoggerFactory.getLogger(SpringTaskDemo.class);
 
     @Async
-    @Scheduled(cron = "0/* 59 * * * *")
+    @Scheduled(cron = "59 * * * * *")
     public void scheduled1() throws InterruptedException {
-         Thread.sleep(3000);
-         log.info("scheduled1 每1秒执行一次：{}"+ LocalDateTime.now());
+         Thread.sleep(1000);
+         log.info("scheduled1 每1分钟执行一次：{}"+ LocalDateTime.now());
     }
 
-    @Scheduled(fixedRate = 1000)
+    @Async
+    @Scheduled(fixedRate = 10000)
     public void scheduled2() throws InterruptedException {
-        Thread.sleep(3000);
-        log.info("scheduled2 每1秒执行一次：{}"+LocalDateTime.now());
+        Thread.sleep(10000);
+        log.info("scheduled2 每10秒执行一次：{}"+LocalDateTime.now());
     }
 
-    @Scheduled(fixedDelay = 3000)
+    @Async
+    @Scheduled(fixedDelay = 15000)
     public void scheduled3() throws InterruptedException {
-        Thread.sleep(5000);
-        log.info("scheduled3 上次执行完毕后隔3秒继续执行：{}",LocalDateTime.now());
+        Thread.sleep(15000);
+        log.info("scheduled3 上次执行完毕后隔15秒继续执行：{}",LocalDateTime.now());
     }
 }
