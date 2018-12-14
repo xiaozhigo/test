@@ -1,7 +1,6 @@
 package com.example.demo.config;
 
 import com.example.demo.timer.TestQuartz;
-import com.example.demo.timer.TestQuartz2;
 import org.quartz.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,8 +19,7 @@ public class QuartzConfig {
 
     @Bean
     public Trigger testQuartzTrigger(){
-        //SimpleScheduleBuilder scheduleBuilder = SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(10).repeatForever();
-        CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule("*/10 * * * * ?");
+        SimpleScheduleBuilder scheduleBuilder = SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(100).repeatForever();
         return TriggerBuilder.newTrigger().forJob(teatQuartzDetail()).withIdentity("testQuartz").withSchedule(scheduleBuilder).build();
     }
 
