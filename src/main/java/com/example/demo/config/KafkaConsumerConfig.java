@@ -19,8 +19,8 @@ import java.util.Map;
  * @date 2018-11-26 15:51
  * 消费者配置类
  */
-@Configuration
-@EnableKafka
+/*@Configuration
+@EnableKafka*/
 public class KafkaConsumerConfig {
     @Value("${spring.kafka.bootstrap-servers}")
     private String servers;

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * @author wulei
  * @date 2018-11-26 16:13
  */
-@Component
+/*@Component*/
 public class VideoCosConsumer {
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 

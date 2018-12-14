@@ -18,7 +18,7 @@ import java.util.Map;
  * @author wulei
  * @date 2018-11-26 16:10
  */
-@Component
+/*@Component*/
 @RestController
 public class KafkaProducer{
     private Logger logger = LoggerFactory.getLogger(getClass());
