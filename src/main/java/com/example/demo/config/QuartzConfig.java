@@ -1,6 +1,7 @@
 package com.example.demo.config;
 
 import com.example.demo.timer.TestQuartz;
+import com.example.demo.timer.TestQuartz2;
 import org.quartz.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
