@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.lang.reflect.Array;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +24,12 @@ public class MongoController {
     public String saveUser(@RequestBody Map<String,Object> map){
         mongoService.saveUser(map);
         return map.toString();
+    }
+
+    @RequestMapping("/pushMap")
+    public String pushMap(@RequestBody Map<String,Object> arrays){
+         mongoService.pushMap(arrays);
+         return arrays.toString();
     }
 
 
