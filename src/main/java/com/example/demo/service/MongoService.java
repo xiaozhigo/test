@@ -25,7 +25,8 @@ public class MongoService {
     private MongoTemplate mongoTemplate;
 
     public void saveUser(Map<String,Object> map) {
-        testRepository.save(map);
+        //testRepository.save(map);
+        mongoTemplate.insert(map,"table1");
     }
 
     public List findAll() {
@@ -53,5 +54,11 @@ public class MongoService {
 
     public void deleteUser(Integer id) {
         mongoTemplate.findAndRemove(new Query(Criteria.where("id").is(id)),Map.class);
+    }
+
+    public void pushMap(Map<String,Object> arrays) {
+        Update update = new Update();
+        update.push("arrays",arrays);
+        mongoTemplate.upsert(new Query(Criteria.where("_id").is(111L)),update,"table1");
     }
 }
