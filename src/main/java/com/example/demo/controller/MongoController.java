@@ -13,7 +13,7 @@ import java.util.Map;
  * @author wulei
  * @date 2019-01-02 14:09
  */
-@RestController
+/*@RestController*/
 public class MongoController {
 
     @Autowired
