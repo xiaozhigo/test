@@ -10,12 +10,13 @@ import org.springframework.stereotype.Component;
  * @author wulei
  * @date 2018-11-26 16:13
  */
-/*@Component*/
+@Component
 public class VideoCosConsumer {
-    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @KafkaListener(topics = {"test1"})
+    @KafkaListener(topics = {"test"})
     public void consumerMessage(ConsumerRecord<?, ?> record){
-        logger.info("on message:{}", record.value());
+        String s = record.value().toString();
+        logger.info("kafka发送消息的内容:"+s);
     }
 }

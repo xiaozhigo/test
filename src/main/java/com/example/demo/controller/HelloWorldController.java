@@ -8,6 +8,8 @@ import com.github.pagehelper.PageInfo;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.retry.backoff.Sleeper;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +29,9 @@ public class HelloWorldController {
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
+
+    @Autowired
+    private KafkaProducer kafkaProducer;
 
     @RequestMapping("/login")
     public String login(){
@@ -83,5 +88,16 @@ public class HelloWorldController {
     @RequestMapping("/queryItem")
     public Map<String,Object> queryItem(){
         return helloService.queryItem();
+    }
+
+
+    @RequestMapping("/kafkaTest")
+    public String kafkaTest(@RequestBody String message){
+        try{
+            kafkaProducer.send(message);
+            return "kafka发送消息成功";
+        }catch (Exception e){
+            return "kafka发送消息失败,失败原因:"+e.toString();
+        }
     }
 }

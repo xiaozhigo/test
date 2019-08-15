@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  * @author wulei
  * @date 2018-11-22 16:46
  */
-@Configuration
+/*@Configuration*/
 public class QuartzConfig {
 
     @Bean
