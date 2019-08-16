@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;
@@ -23,12 +24,15 @@ import java.util.Map;
 @Slf4j
 public class KafkaProducer{
     private Logger logger = LoggerFactory.getLogger(getClass());
+
+    @Value("${topic}")
+    private String topic;
     @Autowired
     private KafkaTemplate kafkaTemplate;
 
     public void send(String message){
         logger.info("message:"+message);
-        ListenableFuture<SendResult<String, Object>> test = kafkaTemplate.send("test",message);
+        ListenableFuture<SendResult<String, Object>> test = kafkaTemplate.send(topic,message);
         SuccessCallback success = new SuccessCallback() {
             @Override
             public void onSuccess(Object o) {

@@ -92,7 +92,7 @@ public class HelloWorldController {
 
 
     @RequestMapping("/kafkaTest")
-    public String kafkaTest(@RequestBody String message){
+    public String kafkaTest(@RequestParam("message") String message){
         try{
             kafkaProducer.send(message);
             return "kafka发送消息成功";

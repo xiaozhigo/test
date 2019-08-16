@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class VideoCosConsumer {
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @KafkaListener(topics = {"test"})
+    @KafkaListener(topics = {"test1"})
     public void consumerMessage(ConsumerRecord<?, ?> record){
         String s = record.value().toString();
         logger.info("kafka发送消息的内容:"+s);
