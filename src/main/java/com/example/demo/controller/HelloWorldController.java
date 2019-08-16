@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.aopTest.MyAnnotation;
 import com.example.demo.entity.Book;
 import com.example.demo.entity.Groups;
 import com.example.demo.exception.CustomException;
@@ -33,8 +34,10 @@ public class HelloWorldController {
     @Autowired
     private KafkaProducer kafkaProducer;
 
+    @MyAnnotation("登录")
     @RequestMapping("/login")
     public String login(){
+        System.out.println("正在登录");
         return "HelloWorld";
     }
 
